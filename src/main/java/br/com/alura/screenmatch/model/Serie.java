@@ -1,5 +1,7 @@
 package br.com.alura.screenmatch.model;
 
+import br.com.alura.screenmatch.service.ConsultaChatGPT;
+import br.com.alura.screenmatch.service.traducao.ConsultaMyMemory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +26,7 @@ public class Serie {
         this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim()); // pega o 1 gênero
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
-        this.sinopse = dadosSerie.sinopse();
+        this.sinopse = ConsultaMyMemory.obterTraducao(dadosSerie.sinopse()).trim();// trim para nenhum caracter branco ou quenra de linha
     }
 
     @Override
