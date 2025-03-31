@@ -1,6 +1,5 @@
 package br.com.alura.screenmatch.model;
 
-import br.com.alura.screenmatch.service.ConsultaChatGPT;
 import br.com.alura.screenmatch.service.traducao.ConsultaMyMemory;
 import lombok.Getter;
 import lombok.Setter;
