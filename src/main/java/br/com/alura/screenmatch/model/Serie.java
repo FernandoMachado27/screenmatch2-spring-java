@@ -1,27 +1,27 @@
 package br.com.alura.screenmatch.model;
 
 import br.com.alura.screenmatch.service.traducao.ConsultaMyMemory;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.persistence.Entity;
 
 import java.util.OptionalDouble;
 
 @Getter
 @Setter
 @Entity
+@Table(name = "series")
 public class Serie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // Chave primária obrigatória
 
+    @Column(unique = true) // titulo é único
     private String titulo;
     private Integer totalTemporadas;
     private Double avaliacao;
+    @Enumerated(EnumType.STRING) // dizer que categoria é um ENUM
     private Categoria genero;
     private String atores;
     private String poster;
