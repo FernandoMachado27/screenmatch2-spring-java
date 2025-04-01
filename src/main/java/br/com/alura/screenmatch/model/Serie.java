@@ -1,14 +1,23 @@
 package br.com.alura.screenmatch.model;
 
 import br.com.alura.screenmatch.service.traducao.ConsultaMyMemory;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.persistence.Entity;
 
 import java.util.OptionalDouble;
 
 @Getter
 @Setter
+@Entity
 public class Serie {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Chave primária obrigatória
 
     private String titulo;
     private Integer totalTemporadas;
