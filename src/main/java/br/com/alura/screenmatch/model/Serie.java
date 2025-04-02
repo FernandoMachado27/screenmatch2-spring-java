@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.OptionalDouble;
 
 @Getter
@@ -26,6 +28,8 @@ public class Serie {
     private String atores;
     private String poster;
     private String sinopse;
+    @Transient
+    private List<Episodio> episodios = new ArrayList<>();
 
     public Serie(DadosSerie dadosSerie) {
         this.titulo = dadosSerie.titulo();
@@ -34,7 +38,8 @@ public class Serie {
         this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim()); // pega o 1 gênero
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
-        this.sinopse = ConsultaMyMemory.obterTraducao(dadosSerie.sinopse()).trim();// trim para nenhum caracter branco ou quenra de linha
+//        this.sinopse = ConsultaMyMemory.obterTraducao(dadosSerie.sinopse()).trim();// trim para nenhum caracter branco ou quebra de linha
+        this.sinopse = dadosSerie.sinopse();
     }
 
     @Override
