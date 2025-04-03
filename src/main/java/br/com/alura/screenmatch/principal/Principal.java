@@ -89,11 +89,7 @@ public class Principal {
     }
 
     private void listarSeriesBuscadas() {
-        List<Serie> series = new ArrayList<>();
-        series = dadosSeries.stream()
-                        .map(d -> new Serie(d)) // para cada dado serie eu vou criar uma série
-                .collect(Collectors.toList());
-
+        List<Serie> series = repository.findAll();
         series.stream()
                 .sorted(Comparator.comparing(Serie::getGenero)) // ordenando pelo gênero
                 .forEach(System.out::println);
