@@ -28,7 +28,7 @@ public class Serie {
     private String atores;
     private String poster;
     private String sinopse;
-    @Transient
+    @OneToMany(mappedBy = "serie")   // uma série tem muitos episódios - mapeado como serie na outra classe
     private List<Episodio> episodios = new ArrayList<>();
 
     public Serie(){} // necessário um construtor padrão
